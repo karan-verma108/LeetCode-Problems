@@ -1,13 +1,12 @@
 const compose = function (functions) {
-  const fn1 = (x) => {
-    return fun2(x * 2);
-  };
-  const fun2 = (x) => {
-    return x + 1;
-  };
+  const [fun1, fun2] = functions;
+  console.log('fun1', fun1);
+  console.log('fun2', fun2);
 
-  return fn1;
+  return function (x) {
+    return functions.reduceRight((accumulator, next) => next(accumulator), x); //reduceRight method works the same as reduce but it can be used to traverse from right to left (opposite of reduce and most importantly, it can traverse through more than 2 items)
+  };
 };
 
-const fn = compose([(x) => x + 1, (x) => 2 * x]);
-console.log(fn(42)); // 9
+const fn = compose([(x) => 10 * x, (x) => 10 * x, (x) => 10 * x]);
+console.log(fn(1));
