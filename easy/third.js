@@ -13,4 +13,4 @@ const sleep = async (millis) => {
   }
 };
 
-sleep(100);
+sleep(2000);
