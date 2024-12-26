@@ -1,17 +1,15 @@
 var cancellable = function (fn, args, t) {
-  let result;
-  if (setTimeout(fn, t)) {
-    result = fn(args);
-  }
-  return result;
+  const cancelMs = 3000;
+  const cancelFn = () => {
+    console.log('cancel fn insdie');
+  };
+
+  return cancelMs > t
+    ? setTimeout(() => {
+        console.log(fn(args));
+      }, t)
+    : setTimeout(cancelFn, cancelMs);
 };
 
-const result1 = cancellable(
-  function (x) {
-    return x + 2;
-  },
-  3,
-  5000
-);
-
-console.log('res1', result1);
+const addNums = (x) => x + 4;
+cancellable(addNums, 3, 5000);
