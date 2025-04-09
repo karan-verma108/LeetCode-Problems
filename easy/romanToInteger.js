@@ -43,5 +43,5 @@ var romanToInt = function (s) {
   return sum;
 };
 
-const result = romanToInt('MCM');
+const result = romanToInt('MCMXCIV');
 console.log(result);
