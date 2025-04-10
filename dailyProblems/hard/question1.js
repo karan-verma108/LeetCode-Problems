@@ -24,20 +24,21 @@ const getProductExcludingIndex = (arr) => {
   let prod = 1;
   const productArr = [];
   let index = 0;
+  const arrLength = arr.length - 1;
   if (arr.length > 0) {
-    console.log('arr before', arr);
+    for (let i = 0; i <= arrLength; i++) {
+      const shallowArr = [...arr]; //creating a shallow copy
+      shallowArr.splice(index, 1);
 
-    for (let i = 0; i <= arr.length - 1; i++) {
-      arr.splice(index, 1);
-      console.log('arr after slice', arr);
-
-      for (let j = 0; j <= arr.length - 1; j++) {
-        prod *= arr[j];
+      for (let j = 0; j <= arrLength - 1; j++) {
+        prod *= shallowArr[j];
       }
       productArr.push(prod);
       index++;
       prod = 1;
     }
+  } else {
+    return 'Please enter some values in array';
   }
   return productArr;
 };
