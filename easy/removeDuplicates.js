@@ -23,20 +23,22 @@ const removeDuplicates = function (nums) {
         newArr.push(nums[i]);
       }
     }
+
+    for (let i = 0; i <= nums.length - 1; i++) {
+      if (typeof newArr[i] === 'number') {
+        nums[i] = newArr[i];
+      } else {
+        nums[i] = '_';
+      }
+    }
   } else {
     console.log('array is empty');
   }
-  console.log('new arr', newArr);
+
   k = newArr.length;
-  let i = 0;
-  while (newArr.length <= nums.length) {
-    nums[i] = newArr[i];
-    i++;
-  }
-  console.log('nums arr', nums);
 
   return k;
 };
 
-const result = removeDuplicates([1, 1, 2]);
+const result = removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]);
 console.log('result', result);
